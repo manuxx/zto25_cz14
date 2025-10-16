@@ -63,7 +63,7 @@ namespace Training.Specificaton
         static Pet pet;
     }
 
-	[Ignore("Will be implemented 2'nd")]
+
 	public class when_adding_an_existing_pet_again_ : pet_shop_concern
     {
         Establish context = () =>
@@ -99,4 +99,6 @@ namespace Training.Specificaton
         private static Pet fluffy_the_first;
         private static Pet fluffy_the_second;
     }
+
+
 }
