@@ -107,11 +107,8 @@ namespace Training.Specificaton
         {
             IEnumerable<Pet> returned_pets = subject.AllPets();
             exception = Catch.Exception(() => { var x = (ICollection<Pet>)returned_pets; });
-            foreach (var returnedPet in returned_pets)
-            {
-                
-            }
         };
+
         private static IEnumerable<Pet> returned_collection_of_pets;
         private static Exception exception;
         It invalid_cast_exception_should_be_thrown = () => exception.ShouldBeOfExactType<InvalidCastException>();
