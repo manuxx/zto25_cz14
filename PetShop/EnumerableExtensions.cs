@@ -13,7 +13,7 @@ public static class EnumerableExtensions
     }
 
 
-    public static IEnumerable<TItem> AllThatSatisfy<TItem>(this IEnumerable<TItem> items, Func<TItem, bool> condition)
+    public static IEnumerable<TItem> AllThatSatisfy<TItem>(this IEnumerable<TItem> items, Predicate<TItem> condition)
     {
         foreach (var item in items)
         {
