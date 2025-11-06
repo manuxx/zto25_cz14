@@ -29,6 +29,13 @@ namespace Training.DomainClasses
             _petsInTheStore.Add(newPet);
         }
 
+        public IEnumerable<Pet> AllPetsSortedByName()
+        {
+            var ret = new List<Pet>(_petsInTheStore);
+            ret.Sort((p1, p2) => p1.name.CompareTo(p2.name));
+            return ret;
+        }
+        
         public IEnumerable<Pet> AllCats()
         {
             return _petsInTheStore.AllThatSatisfy(Pet.IsASpeciesOf(Species.Cat));
@@ -39,13 +46,6 @@ namespace Training.DomainClasses
         {
             return _petsInTheStore.AllThatSatisfy(Pet.IsASpeciesOf(Species.Mouse));
 
-        }
-
-        public IEnumerable<Pet> AllPetsSortedByName()
-        {
-            var ret = new List<Pet>(_petsInTheStore);
-            ret.Sort((p1, p2) => p1.name.CompareTo(p2.name));
-            return ret;
         }
         public IEnumerable<Pet> AllFemalePets()
         {

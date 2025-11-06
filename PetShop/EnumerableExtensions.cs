@@ -15,9 +15,13 @@ public static class EnumerableExtensions
 
     public static IEnumerable<TItem> AllThatSatisfy<TItem>(this IEnumerable<TItem> items, Predicate<TItem> condition)
     {
+        return items.AllThatSatisfy(new AnonymousCriteria<TItem>(condition));
+    }
+    public static IEnumerable<TItem> AllThatSatisfy<TItem>(this IEnumerable<TItem> items, Criteria<TItem> criteria)
+    {
         foreach (var item in items)
         {
-            if (condition(item))
+            if (criteria.IsSatisfied(item))
                 yield return item;
         }
     }
