@@ -31,12 +31,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCats()
         {
-            foreach (var pet in _petsInTheStore)
-            {
-                if(pet.species==Species.Cat)
-                    yield return pet;
-            }
-
+            return _petsInTheStore.AllThatSatisfy((pet => pet.species == Species.Cat));
         }
 
         public IEnumerable<Pet> AllPetsSortedByName()
@@ -48,42 +43,44 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllMice()
         {
-            throw new NotImplementedException();
+            return _petsInTheStore.AllThatSatisfy((pet => pet.species== Species.Mouse));
+
         }
 
         public IEnumerable<Pet> AllFemalePets()
         {
-            throw new NotImplementedException();
+            return _petsInTheStore.AllThatSatisfy((pet => pet.sex == Sex.Female));
         }
 
         public IEnumerable<Pet> AllCatsOrDogs()
         {
-            throw new NotImplementedException();
+            return _petsInTheStore.AllThatSatisfy((pet => pet.species == Species.Cat || pet.species==Species.Dog));
         }
 
         public IEnumerable<Pet> AllPetsButNotMice()
         {
-            throw new NotImplementedException();
+            return _petsInTheStore.AllThatSatisfy((pet => pet.species != Species.Mouse));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
         {
-            throw new NotImplementedException();
+            return _petsInTheStore.AllThatSatisfy((pet => pet.yearOfBirth > 2010));
+
         }
 
         public IEnumerable<Pet> AllDogsBornAfter2010()
         {
-            throw new NotImplementedException();
+            return _petsInTheStore.AllThatSatisfy((pet => pet.species==Species.Dog &&  pet.yearOfBirth > 2010));
         }
 
         public IEnumerable<Pet> AllMaleDogs()
         {
-            throw new NotImplementedException();
+            return _petsInTheStore.AllThatSatisfy((pet => pet.sex == Sex.Male && pet.species == Species.Dog));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
         {
-            throw new NotImplementedException();
+            return _petsInTheStore.AllThatSatisfy((pet => pet.species==Species.Rabbit || pet.yearOfBirth > 2011));
         }
     }
 }
